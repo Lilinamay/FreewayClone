@@ -12,7 +12,8 @@ public class playerBehavior : MonoBehaviour
     float startY = -5;
     public int score = 0;
     [SerializeField] TMP_Text scoreDisplay;
-
+    public bool triggered = false;
+    public float currentLerpTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,7 @@ public class playerBehavior : MonoBehaviour
     {
         CheckBoundary();
         keyInput();
+        BounceBack();
         transform.position += new Vector3(0, y * pSpeed * Time.deltaTime);
         scoreDisplay.text = score.ToString();
     }
@@ -61,4 +63,23 @@ public class playerBehavior : MonoBehaviour
 	{
 		/// knock back
 	}
+
+    private void BounceBack()
+    {
+        if (triggered)
+        {
+            currentLerpTime += 0.5f;
+            triggered = false;
+        }
+        
+        if (currentLerpTime > 0)
+        {
+            currentLerpTime -= Time.deltaTime;
+            transform.position += Vector3.down * Time.deltaTime;
+        }
+        if (currentLerpTime <= 0)
+        {
+            currentLerpTime = 0;
+        }
+    }
 }
