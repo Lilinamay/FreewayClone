@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class carBehavior : MonoBehaviour
+public class carRBehavior : MonoBehaviour
 {
     public float speed;     //currently only start from left
-    float endX = 12;
-    float startX = -12;
+    float endX = -12;
+    float startX = 12;
+    
     
     
     // Start is called before the first frame update
@@ -19,14 +20,14 @@ public class carBehavior : MonoBehaviour
     void Update()
     {
         //if (global.start == 1){
-        transform.position += new Vector3(speed * Time.deltaTime, 0);
+        transform.position -= new Vector3(speed * Time.deltaTime, 0);
         CheckBoundary();
         //}
 
     }
 
     private void CheckBoundary() {
-        if (transform.position.x >= endX)
+        if (transform.position.x <= endX)
         {
             transform.position = new Vector3(startX, transform.position.y);
         }
@@ -48,6 +49,4 @@ public class carBehavior : MonoBehaviour
             }
         }
     }
-
-
 }

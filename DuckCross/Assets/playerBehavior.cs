@@ -25,6 +25,7 @@ public class playerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (global.start == 1){
         CheckBoundary();
         if (playerControl)
         {
@@ -36,6 +37,7 @@ public class playerBehavior : MonoBehaviour
             transform.position += new Vector3(0, y * pSpeed * Time.deltaTime);
         }
         scoreDisplay.text = score.ToString();
+        //}
     }
 
     public void keyInput()
