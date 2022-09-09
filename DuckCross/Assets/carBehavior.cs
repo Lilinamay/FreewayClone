@@ -36,9 +36,14 @@ public class carBehavior : MonoBehaviour
         {
             Debug.Log("car!");
             Debug.Log(collision.transform.position);
-            collision.GetComponent<playerBehavior>().triggered = true;
-            
-            //
+            if (collision.GetComponent<bounceBack>() != null)
+            {
+                collision.GetComponent<bounceBack>().triggered = true;
+            }
+            else if(collision.GetComponent<teleportBack>()!= null)
+            {
+                collision.GetComponent<teleportBack>().triggered = true;
+            }
         }
     }
 

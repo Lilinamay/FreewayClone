@@ -9,24 +9,32 @@ public class playerBehavior : MonoBehaviour
     public KeyCode downKey;
     int y = 0;  //use to track player key control 
     float endY = 5;
-    float startY = -5;
+    public float startY = -5;
     public int score = 0;
+    public bool playerControl = true;   //use to disable/able player control
+ 
+
     [SerializeField] TMP_Text scoreDisplay;
-    public bool triggered = false;
-    public float currentLerpTime;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckBoundary();
-        keyInput();
-        BounceBack();
-        transform.position += new Vector3(0, y * pSpeed * Time.deltaTime);
+        if (playerControl)
+        {
+            keyInput();
+        }
+
+        if (playerControl)
+        {
+            transform.position += new Vector3(0, y * pSpeed * Time.deltaTime);
+        }
         scoreDisplay.text = score.ToString();
     }
 
@@ -53,33 +61,14 @@ public class playerBehavior : MonoBehaviour
             transform.position = new Vector3(transform.position.x, startY);
             score++;
         }
+
         if (transform.position.y <= startY)
         {
             transform.position = new Vector3(transform.position.x, startY);
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-	{
-		/// knock back
-	}
 
-    private void BounceBack()
-    {
-        if (triggered)
-        {
-            currentLerpTime += 0.5f;
-            triggered = false;
-        }
-        
-        if (currentLerpTime > 0)
-        {
-            currentLerpTime -= Time.deltaTime;
-            transform.position += Vector3.down * Time.deltaTime;
-        }
-        if (currentLerpTime <= 0)
-        {
-            currentLerpTime = 0;
-        }
-    }
+
+
 }
