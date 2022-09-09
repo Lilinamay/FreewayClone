@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class carBehavior : MonoBehaviour
 {
-    public float speed;
+    public float speed;     //currently only start from left
     float endX = 10;
     float startX = -10;
 
