@@ -5,8 +5,8 @@ using UnityEngine;
 public class carBehavior : MonoBehaviour
 {
     public float speed;     //currently only start from left
-    float endX = 12;
-    float startX = -12;
+    float endX = 11;
+    float startX = -11;
     
     
     // Start is called before the first frame update

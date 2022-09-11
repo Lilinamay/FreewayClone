@@ -5,8 +5,8 @@ using UnityEngine;
 public class carRBehavior : MonoBehaviour
 {
     public float speed;     //currently only start from left
-    float endX = -12;
-    float startX = 12;
+    float endX = -11;
+    float startX = 11;
     
     
     
