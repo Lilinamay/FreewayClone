@@ -8,18 +8,18 @@ public class carRBehavior : MonoBehaviour
     float endX = -11;
     float startX = 11;
     
-    
+    public AudioSource hit;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        hit = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (global.start == 1){
+        //if (start == 1){
         transform.position -= new Vector3(speed * Time.deltaTime, 0);
         CheckBoundary();
         //}
@@ -38,6 +38,7 @@ public class carRBehavior : MonoBehaviour
         if (CompareTag("car"))
         {
             Debug.Log("car!");
+            hit.Play();
             Debug.Log(collision.transform.position);
             if (collision.GetComponent<bounceBack>() != null)
             {

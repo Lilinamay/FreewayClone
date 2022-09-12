@@ -16,10 +16,12 @@ public class playerBehavior : MonoBehaviour
 
     [SerializeField] TMP_Text scoreDisplay;
 
+    public AudioSource success;
+
     // Start is called before the first frame update
     void Start()
     {
-
+       success = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -62,6 +64,7 @@ public class playerBehavior : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, startY);
             score++;
+            success.Play();
         }
 
         if (transform.position.y <= startY)
